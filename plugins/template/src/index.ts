@@ -8,14 +8,15 @@ let patches = [];
 
 export default {
     onLoad: () => {
+        logger.log("XYZABC: Hello, world.")
         patches.push(
             before("downloadMediaAsset", MediaManager, (args) => {
-                logger.log("Downloading media asset: " + args[0]);
+                logger.log("XYZABC: Downloading media asset: " + args[0]);
             })
         );
     },
     onUnload: () => {
-        logger.log("Goodbye, world.");
+        logger.log("XYZABC: Goodbye, world.");
     },
     settings: Settings,
 }
