@@ -10,12 +10,12 @@ export default {
     onLoad: () => {
         patches.push(
             before("downloadMediaAsset", MediaManager, (args) => {
-                logger.log("Downloading media asset: " + args[0]);
+                console.log("Downloading media asset: " + args[0]);
             })
         );
     },
     onUnload: () => {
-        logger.log("Goodbye, world.");
+        console.log("Goodbye, world.");
     },
     settings: Settings,
 }
