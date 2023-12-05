@@ -5,7 +5,7 @@ import { before } from "@vendetta/patcher";
 
 const MediaManager = findByProps("downloadMediaAsset");
 let patches = [];
-
+logger.log("XYZABC: Hello, world.")
 export default {
     onLoad: () => {
         logger.log("XYZABC: Hello, world.")
