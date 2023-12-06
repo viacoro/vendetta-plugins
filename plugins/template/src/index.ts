@@ -9,14 +9,17 @@ logger.log("Hello, world first");
 export default {
     onLoad: () => {
         logger.log("Hello, world second");
+        console.log("Hello, world second");
         patches.push(
             before("downloadMediaAsset", MediaManager, (args) => {
-                logger.log("XYZABC: Downloading media asset: " + args[0]);
+                logger.log("Downloading media asset: " + args[0]);
+                console.log("Downloading media asset: " + args[0]);
             })
         );
     },
     onUnload: () => {
-        logger.log("XYZABC: Goodbye, world.");
+        logger.log("Goodbye, world.");
+        console.log("Goodbye, world.");
     },
     settings: Settings,
 }
