@@ -12,7 +12,8 @@ export default {
         console.log("Hello, world second");
         before("downloadMediaAsset", MediaManager, (args) => {
             logger.log("Downloading media asset: " + args[0]);
-            console.log("Downloading media asset: " + args);
+            console.log("Downloading media asset: " + args[0]);
+            console.log("All args: " + args);
         });
     },
     onUnload: () => {
