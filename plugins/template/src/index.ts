@@ -5,10 +5,10 @@ import { before } from "@vendetta/patcher";
 
 const MediaManager = findByProps("downloadMediaAsset");
 let patches = [];
-logger.log("XYZABC: Hello, world.")
+logger.log("Hello, world first");
 export default {
     onLoad: () => {
-        logger.log("XYZABC: Hello, world.")
+        logger.log("Hello, world second");
         patches.push(
             before("downloadMediaAsset", MediaManager, (args) => {
                 logger.log("XYZABC: Downloading media asset: " + args[0]);
