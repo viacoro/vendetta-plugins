@@ -22,4 +22,4 @@ export default {
         console.log("Goodbye, world.");
     },
     settings: Settings,
-}
+};
