@@ -29,7 +29,7 @@ function startPlugin() {
                 // Hides blocked messages on channel loads
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
                     event.messages = event.messages.forEach((message) => {
-                        if (message.attachments.length > 0 && channelStore.getChannel(event?.channelId)?.nsfw_){
+                        if (/*message.attachments.length > 0 &&*/ channelStore.getChannel(event?.channelId)?.nsfw_){
                             console.log(message);
                         }
                     });
