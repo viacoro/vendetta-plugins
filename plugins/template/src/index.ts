@@ -30,14 +30,14 @@ function startPlugin() {
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
                     event.messages = event.messages.forEach((message) => {
                         if (message.attachments.length > 0){
-                            console.log(message);
+                            //console.log(message);
                         }
                     });
                 }
                 // Hides blocked messages on message creation/update
                 if (event.type === "MESSAGE_CREATE" || event.type === "MESSAGE_UPDATE") {
                     const message = event.message;
-                    console.log(message);
+                    //fconsole.log(message);
                     if (isBlocked(message?.author?.id)) {
                         // Drop event
                         event.channelId = "0";
@@ -51,7 +51,7 @@ function startPlugin() {
         const patch2 = (
             before("generate", RowManager.prototype, ([data]) => {
                 if (data.message?.attachments?.length > 0) {
-                    console.log(data.message.content);
+                    //console.log(data.message.content);
                 }
                 if (isBlocked(data.message?.author?.id)) {
                     data.renderContentOnly = true;
