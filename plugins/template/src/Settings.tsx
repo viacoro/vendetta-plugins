@@ -5,7 +5,7 @@ import { storage } from "@vendetta/plugin";
 
 export default () => {
     useProxy(storage);
-
+    // blatantly stolen from sunnie (https://github.com/sunnniee/vendetta-plugins/blob/master/plugins/SplitLargeMessages/src/settings.tsx)
     return (
         <ErrorBoundary>
             <ReactNative.ScrollView>
