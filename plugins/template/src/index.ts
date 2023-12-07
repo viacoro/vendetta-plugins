@@ -1,8 +1,10 @@
 import { logger } from "@vendetta";
 import Settings from "./Settings";
-import {findByProps, findByName} from "@vendetta/metro";
+import {findByName, findByStoreName} from "@vendetta/metro";
 import {before} from "@vendetta/patcher";
 import { FluxDispatcher } from '@vendetta/metro/common';
+
+const channelStore = findByStoreName("ChannelStore");
 
 const patches = [];
 const pluginName = "IHaveNoIdeaWhatImDoingPlugin";
@@ -24,8 +26,7 @@ function startPlugin() {
         // Main patch
         const patch1 = (
             before("dispatch", FluxDispatcher, ([event]) => {
-                console.log(event);
-                console.log(Reflect.ownKeys(event));
+                console.log(channelStore.getChannel(event?.channelId));
                 // Hides blocked messages on channel loads
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
                     event.messages = event.messages.forEach((message) => {
