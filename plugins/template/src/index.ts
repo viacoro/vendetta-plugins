@@ -1,10 +1,10 @@
 import { logger } from "@vendetta";
 import Settings from "./Settings";
 import { findByProps } from "@vendetta/metro";
-import { before } from "@vendetta/patcher";
+import { instead } from "@vendetta/patcher";
 
-//const MediaManager = findByProps("downloadMediaAsset");
-const MediaManager = findByProps("saveFileToGallery");
+const MediaManager = findByProps("downloadMediaAsset");
+const SaveToGallery = findByProps("saveFileToGallery");
 logger.log("Hello, world first");
 console.log("Hello, world first");
 
@@ -14,11 +14,12 @@ export default {
         logger.log("Hello, world second");
         console.log("is new version");
         console.log("Hello, world second");
-        before("saveFileToGallery", MediaManager, (args) => {
+        instead("downloadMediaAsset", MediaManager, (args) => {
             console.log("is new version");
             logger.log("Downloading media asset: " + args[0]);
             console.log("Downloading media asset: " + args[0]);
             console.log("All args: " + args);
+            SaveToGallery.saveFileToGallery(args[0]);
         });
     },
     onUnload: () => {
