@@ -14,7 +14,7 @@ export default {
         logger.log("Hello, world second");
         console.log("is new version");
         console.log("Hello, world second");
-        before("downloadMediaAsset", MediaManager, (args) => {
+        before("writeFile", MediaManager, (args) => {
             console.log("is new version");
             logger.log("Downloading media asset: " + args[0]);
             console.log("Downloading media asset: " + args[0]);
