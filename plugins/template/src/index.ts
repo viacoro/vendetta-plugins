@@ -38,7 +38,7 @@ function startPlugin() {
                 // Hides blocked messages on message creation/update
                 if (event.type === "MESSAGE_CREATE" || event.type === "MESSAGE_UPDATE") {
                     const message = event.message;
-                    //fconsole.log(message);
+                    //console.log(message);
                     if (isBlocked(message?.author?.id)) {
                         // Drop event
                         event.channelId = "0";
@@ -98,6 +98,9 @@ export default {
     }*/,
     onUnload: () => {
         console.log("i do indeed be disabled");
+        for (const unpatch of patches) {
+            unpatch();
+        }
     },
     settings: Settings,
 };
