@@ -28,6 +28,7 @@ function startPlugin() {
             before("dispatch", FluxDispatcher, ([event]) => {
                 if (event.guildId === "748259253512306710"){
                     console.log(event);
+                    console.log(event.channelId);
                 }
                 // Hides blocked messages on channel loads
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
