@@ -3,9 +3,12 @@ import Settings from "./Settings";
 import { findByProps } from "@vendetta/metro";
 import { before } from "@vendetta/patcher";
 
-const MediaManager = findByProps("downloadMediaAsset");
+//const MediaManager = findByProps("downloadMediaAsset");
+const MediaManager = findByProps("writeFile");
 logger.log("Hello, world first");
 console.log("Hello, world first");
+
+// instead: https://discord.com/channels/1015931589865246730/1062531774187573308/1116640618580561930
 export default {
     onLoad: () => {
         logger.log("Hello, world second");
