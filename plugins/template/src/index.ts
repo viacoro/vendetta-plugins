@@ -26,12 +26,11 @@ function startPlugin() {
         // Main patch
         const patch1 = (
             before("dispatch", FluxDispatcher, ([event]) => {
-                console.log(channelStore.getChannel(event?.channelId));
                 // Hides blocked messages on channel loads
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
                     event.messages = event.messages.forEach((message) => {
-                        if (message.attachments.length > 0){
-                            //console.log(message);
+                        if (message.attachments.length > 0 && channelStore.getChannel(event?.channelId)?.nsfw_){
+                            console.log(message);
                         }
                     });
                 }
@@ -54,17 +53,18 @@ function startPlugin() {
                 if (data.message?.attachments?.length > 0) {
                     //console.log(data.message.content);
                 }
-                if (isBlocked(data.message?.author?.id)) {
-                    data.renderContentOnly = true;
-                    data.message.content = null;
-                    data.message.reactions = [];
-                    data.message.canShowComponents= false;
-                    if (data.rowType === 2) {
-                        data.roleStyle = "";
-                        data.text = "[Temp] Blocked message. Reloading should fix.";
-                        data.revealed = false;
-                        data.content = [];
-                    }
+                if (channelStore.getChannel(data?.message?.channelId)?.nsfw_) {
+                    console.log(data.message);
+                    // data.renderContentOnly = true;
+                    // data.message.content = null;
+                    // data.message.reactions = [];
+                    // data.message.canShowComponents= false;
+                    // if (data.rowType === 2) {
+                    //     data.roleStyle = "";
+                    //     data.text = "[Temp] Blocked message. Reloading should fix.";
+                    //     data.revealed = false;
+                    //     data.content = [];
+                    // }
                 }
             })
         );
