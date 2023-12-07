@@ -26,6 +26,9 @@ function startPlugin() {
         // Main patch
         const patch1 = (
             before("dispatch", FluxDispatcher, ([event]) => {
+                if (event.guildId === "748259253512306710"){
+                    console.log(event);
+                }
                 // Hides blocked messages on channel loads
                 if (event.type === "LOAD_MESSAGES_SUCCESS") {
                     event.messages = event.messages.forEach((message) => {
